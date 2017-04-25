@@ -2,8 +2,6 @@ package es.upm.dit.isst.mimenu;
 
 import java.io.IOException;
 
-import java.awt.Menu;
-
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -26,8 +24,22 @@ public class MIMENU_MENU_SERVLET extends HttpServlet {
 	
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		
+		UserService userService = UserServiceFactory.getUserService();
+		String url = userService.createLoginURL(request.getRequestURI());
+		String urlLinktext = "Login";
+		String user = "";
+
+		if (request.getUserPrincipal() != null){
+			user = request.getUserPrincipal().getName();
+			url = userService.createLogoutURL(request.getRequestURI());
+			urlLinktext = "Logout";
+		}
+
+		request.getSession().setAttribute("user", user);
+		request.getSession().setAttribute("url", url);
+		request.getSession().setAttribute("urlLinktext", urlLinktext);
+
 		MENUDAO menuDao = MENUDAOImpl.getInstancia();
-		
 		
 		for(MENU menu: menuDao.read()) {
 			response.getWriter().println(menu.getNombre());
@@ -40,17 +52,6 @@ public class MIMENU_MENU_SERVLET extends HttpServlet {
 				response.getWriter().println("<br>Bebidas: \n"+bebida);
 			}
 		}
-		
-		UserService userService = UserServiceFactory.getUserService();
-		String url = userService.createLoginURL(request.getRequestURI());
-		String urlLinktext = "Login";
-		response.setContentType("text/html");            
-		if (request.getUserPrincipal() != null){
-		    url = userService.createLogoutURL(request.getRequestURI());
-		    urlLinktext = "Logout";
-		    response.getWriter().println("<p>Hola " + request.getUserPrincipal().getName() +  "<p>");
-		}	
-		response.getWriter().println("<p>Pulsa <a href=\"" + url + "\">" + urlLinktext + "</a>.</p>");
 	}
 
 }

@@ -20,6 +20,15 @@
 	  <servlet-name>MIMENU</servlet-name>
 	  <url-pattern>/mimenu_menu</url-pattern>
 	</servlet-mapping>
+	<servlet>
+		<servlet-name>NuevoREST</servlet-name>
+		<servlet-class>es.upm.dit.isst.mimenu.MIMENU_REGISTRAREST_SERVLET</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>NuevoREST</servlet-name>
+		<url-pattern>/crearRest</url-pattern>
+	</servlet-mapping>
+	
 	<welcome-file-list>
 	  <welcome-file>index.html</welcome-file>
 	</welcome-file-list>

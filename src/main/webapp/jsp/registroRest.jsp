@@ -45,7 +45,11 @@
 </head>
 
 <body>
+	<!-- Meto el header sin usuario regstrado -->
+    <jsp:include page="header_nologin.jsp"/>
+    
 	<div class="container">
+			
 	    <div class="row">
 	        <div class="col-md-6">
 	            <form action="/registrar_restaurante" method="post" id="fileForm" role="form">
@@ -130,8 +134,11 @@
 	        </div>
 	    </div>
     </div>
+    
+    <!-- Footer -->
+        <jsp:include page="footer.jsp" />
 
-     <script src="bootstrap-3.3.7/js/jquery-1.11.0.min.js"></script>
+    <script src="bootstrap-3.3.7/js/jquery-1.11.0.min.js"></script>
 	<script src="bootstrap-3.3.7/js/bootstrap-registro.min.js"></script>
 
 </body>

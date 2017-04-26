@@ -26,10 +26,17 @@
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>NuevoREST</servlet-name>
-		<url-pattern>/crearRest</url-pattern>
+		<url-pattern>/registrar_restaurante</url-pattern>
 	</servlet-mapping>
-	
+	<servlet>
+	   <servlet-name>FormularioREST</servlet-name>
+	   <servlet-class>es.upm.dit.isst.mimenu.MIMENU_REGISTRO_REST_SERVLET</servlet-class>
+	</servlet>
+	<servlet-mapping>
+	<servlet-name>FormularioREST</servlet-name>
+	<url-pattern>/ir_registro_restaurante</url-pattern>
+	</servlet-mapping>
 	<welcome-file-list>
-	  <welcome-file>index.html</welcome-file>
+	  <welcome-file>index.jsp</welcome-file>
 	</welcome-file-list>
 </web-app>
